@@ -28,7 +28,12 @@
 img{
   width: 50%;
   height: auto;
-  padding: 3rem;
+  margin: 3rem;
+}
+
+#spotify-logo{
+  width: 15%;
+  float: center;
 }
 
 a {

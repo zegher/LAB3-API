@@ -36,17 +36,21 @@ export default class App{
         .then(response => response.json())
         .then(data => {
             var picture = document.querySelector("img");
+            let backgroundcolor = document.querySelector('#app');
             if(data.current_weather.temperature <= 20){
                 document.querySelector('h1').innerHTML = 'The weather is hot!';
                 picture.src = 'images/warm.jpeg'
+                backgroundcolor.style.backgroundColor = '#F5360D';
             } 
             else if(data.current_weather.temperature >= 20){
                 document.querySelector('h1').innerHTML = 'The weather is nice!';
                 picture.src = 'images/nice.jpg'
+                backgroundcolor.style.backgroundColor = '#4796FA';
             } 
             else if(data.current_weather.temperature >= 15){
                 document.querySelector('h1').innerHTML = 'Its cold!';
                 picture.src = 'images/cold.avif'
+                backgroundcolor.style.backgroundColor = '#B0B2B4';
             }
         })
         .catch(error => {
