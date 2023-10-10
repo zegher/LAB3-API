@@ -35,14 +35,18 @@ export default class App{
         fetch(`https://api.open-meteo.com/v1/forecast?latitude=${x}&longitude=${y}&hourly=temperature_2m&current_weather=true&forecast_days=1`)
         .then(response => response.json())
         .then(data => {
+            var image = document.getElementById('w.image');
             if(data.current_weather.temperature <= 20){
                 document.querySelector('h1').innerHTML = 'The weather is hot!';
+                image.src = '/images/hot.jpeg'
             } 
             else if(data.current_weather.temperature >= 20){
                 document.querySelector('h1').innerHTML = 'Its nice weather!';
+                image.src = '/images/nice.jpg'
             } 
             else if(data.current_weather.temperature >= 15){
                 document.querySelector('h1').innerHTML = 'Its cold!';
+                image.src = '/images/cold.avif'
             }
         })
         .catch(error => {
