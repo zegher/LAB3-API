@@ -14,6 +14,17 @@
   -webkit-text-size-adjust: 100%;
 }
 
+#app{
+  width: 50%;
+  background-color: darkslateblue;
+}
+
+.flex{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -85,7 +96,7 @@ button:focus-visible {
 
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
+    color: white;
     background-color: #ffffff;
   }
   a:hover {
