@@ -1,4 +1,3 @@
-import './style.css'
-import App from './src/App.js'
-
+import App from './src/App.js';
+import './style.css';
 const app = new App();
