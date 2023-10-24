@@ -21,7 +21,7 @@ export default class App{
     getWeather(x,y){
         //url: https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&hourly=temperature_2m&current_weather=true&forecast_days=1
         
-        fetch(`https://api.open-meteo.com/v1/forecast?latitude=${x}&longitude=${y}&hourly=temperature_2m&current_weather=true&forecast_days=1`)
+        fetch(`https://api.open-meteo.com/v1/forecast?latitude=${x}&longitude=${y}&current=temperature_2m&hourly=temperature_2m&daily=weathercode&forecast_days=1`)
         .then(response => response.json())
         .then(data => {
             document.querySelector('h2').innerHTML = data.current_weather.temperature + ' °C';
