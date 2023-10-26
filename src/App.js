@@ -1,7 +1,7 @@
-let api_giphy = "fxsc9bh2cbGGkHpfacOo03JP36u8cOpg";
 export default class App{
 
     
+    // let api_giphy = "fxsc9bh2cbGGkHpfacOo03JP36u8cOpg";
     constructor(){
         navigator.geolocation.getCurrentPosition(
             this.showPosition.bind(this), //zorgt dat deze this vastgeplakt staat aan de functie van de positie
@@ -42,6 +42,7 @@ export default class App{
             let backgroundcolor = document.querySelector('#app');
             if(data.current_weather.temperature >= 20){
                 document.querySelector('h1').innerHTML = 'The weather is hot!';
+
                 picture.src = 'images/warm.jpeg'
                 backgroundcolor.style.backgroundColor = '#F5360D';
             } 
