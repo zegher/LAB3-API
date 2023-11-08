@@ -25,6 +25,7 @@ export default class App{
         .then(response => response.json())
         .then(data => {
             document.querySelector('h2').innerHTML = data.current_weather.temperature + ' °C';
+
         })
         .catch(error => {
             console.log(error + "error fetching eerst")
@@ -71,17 +72,18 @@ export default class App{
     }
 
     getGiphy(gKey, searchWord){
-        fetch(`api.giphy.com/v1/gifs/api_key?q=${gKey}&search?q=${searchWord}&limit=1&offset=0&rating=g&lang=en`)
+        fetch(`https://api.giphy.com/v1/gifs/search?api_key=${gKey}&q=${searchWord}`)
         .then(response => response.json())
         .then(data => {
+            // console.log(data);
             console.log(data + "gif");
             console.log(searchWord + "gif");
-            document.querySelector('img').src = data.data[0].images.original.url;
+            document.querySelector("img").src = data.data[0].images.original.url;
+            document.body.appendChild(img);
         })
         .catch(error => {
-            // console.log(gKey); //hij kan de key lezen!!
+            // console.log(searchWord); //hij kan de key lezen!!
             console.log(error + "Probleem met koude gif")
         })
     }
-    
 }

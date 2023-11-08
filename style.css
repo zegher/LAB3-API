@@ -14,18 +14,20 @@ body{
 
   display:  flex;
   flex-direction: column;
+  float: center;
 }
 
 .flex{
   display: flex;
   justify-content: space-between;
   align-items: center;
+  float: center;
+  margin: 0 25% 0 25%;
 }
 
 img{
-  width: 50%;
+  width: 100%;
   height: auto;
-  margin: 3rem;
 }
 
 #spotify-logo{
