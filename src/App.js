@@ -18,19 +18,6 @@ export default class App{
         this.getWeather(x,y);
     }
 
-    getGiphy(gKey, searchWord){
-        fetch(`api.giphy.com/v1/gifs/api_key?q=${gKey}&search?q=${searchWord}&limit=1&offset=0&rating=g&lang=en}`)
-        .then(response => response.json())
-        .then(data => {
-            console.log(data + "gif");
-            console.log(searchWord + "gif");
-        })
-        .catch(error => {
-            // console.log(gKey); //hij kan de key lezen!!
-            console.log(error + "Probleem met koude gif")
-        })
-    }
-
     getWeather(x,y){
         //url: https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&hourly=temperature_2m&current_weather=true&forecast_days=1
         
@@ -54,29 +41,24 @@ export default class App{
             let backgroundcolor = document.querySelector('#app');
             if(data.current_weather.temperature >= 20){
                 document.querySelector('h1').innerHTML = 'The weather is hot!';
-                let searchWord = 'warm';
-                console.log('warm');
-                picture.src = 'images/warm.jpeg'
                 backgroundcolor.style.backgroundColor = '#F5360D';
+                
+                let searchWord = 'warm';
+                this.getGiphy(gKey, searchWord);
+
             } 
             else if(data.current_weather.temperature >= 20){
                 document.querySelector('h1').innerHTML = 'The weather is nice!';
-                
-                let searchWord = 'nice';
-                console.log('nice');
-
-                picture.src = 'images/nice.jpg'
                 backgroundcolor.style.backgroundColor = '#4796FA';
+
+                let searchWord = 'nice';            
+                this.getGiphy(gKey, searchWord);
             } 
             else if(data.current_weather.temperature <= 15){
                 document.querySelector('h1').innerHTML = 'Its cold!';
-                console.log('cold');
-                
-                // picture.src = 'https://media0.giphy.com/media/3o6Zt2FsmthIOdUm5y/giphy.gif?cid=74b27eab5nlu1fy71u9tua7v7q3w14aqg6epm35t06gb4xcl&ep=v1_gifs_search&rid=giphy.gif&ct=g';
-
                 backgroundcolor.style.backgroundColor = '#B0B2B4';
-                
-                let searchWord = 'cold';
+
+                let searchWord = "cold";
                 this.getGiphy(gKey, searchWord);
             }
         })
@@ -84,13 +66,22 @@ export default class App{
             console.log(error)
         })
     }
-
-    
-
     showError(error){
         console.log(error);
     }
 
-    
+    getGiphy(gKey, searchWord){
+        fetch(`api.giphy.com/v1/gifs/api_key?q=${gKey}&search?q=${searchWord}&limit=1&offset=0&rating=g&lang=en`)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data + "gif");
+            console.log(searchWord + "gif");
+            document.querySelector('img').src = data.data[0].images.original.url;
+        })
+        .catch(error => {
+            // console.log(gKey); //hij kan de key lezen!!
+            console.log(error + "Probleem met koude gif")
+        })
+    }
     
 }
